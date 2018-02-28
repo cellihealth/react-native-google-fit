@@ -169,8 +169,9 @@ class RNGoogleFit {
      */
 
     getWeightSamples(options, callback) {
-        let startDate = Date.parse(options.startDate);
-        let endDate = Date.parse(options.endDate);
+        let startDate = options.startDate != undefined ? Date.parse(options.startDate) : (new Date()).setHours(0,0,0,0);
+        let endDate = options.endDate != undefined ? Date.parse(options.endDate) : (new Date()).valueOf();
+
         googleFit.getWeightSamples( startDate,
             endDate,
             (msg) => {
